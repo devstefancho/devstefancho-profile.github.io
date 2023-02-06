@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@page {
+  size: A4;
+}
+
+/** override css when print **/
+@media print {
+  body .page {
+    border: none;
+    /* height: 29.7cm; */
+    height: 30.55cm; /* 29.7이 딱 안맞아서 약간 보정함*/
+  }
+
+  body footer {
+    display: none !important;
+  }
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-Light";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  font-family: "Pretendard-Regular";
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.page {
+  width: 21cm;
+  margin: auto;
+  box-sizing: border-box;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  overflow-y: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Pretendard-Bold";
+  page-break-after: avoid;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+li {
+  list-style: square;
+}
+
+a {
+  text-decoration: underline;
+  font-style: italic;
+  @apply text-blue-400;
+}
+
+th {
+  min-width: max-content;
+}
+
+table {
+  border: 1px soild gray;
+}
+
+@layer components {
+  .section-title {
+    @apply text-lg font-bold;
+  }
+  .divider {
+    @apply h-[1px] w-full bg-black mt-2 mb-4;
+  }
+  .company-name {
+    @apply text-xs font-pre-mono-regular flex gap-x-2 items-center text-gray-600;
+  }
+  .company-period {
+    @apply text-xs text-gray-500 font-pre-mono-light mb-2;
+  }
+  .company-role {
+    @apply text-base font-pre-mono-bold;
+  }
+  .company-team,
+  .company-service {
+    @apply flex;
+  }
+  .company-team div:first-child,
+  .company-service div:first-child {
+    min-width: 100px;
+  }
+
+  .page-body {
+    margin-left: 100px;
+    @apply ml-5 mr-5 mt-10;
+  }
+
+  .exp-detail-left {
+    flex-grow: 1;
+  }
+
+  .exp-detail-right {
+    flex-basis: 28%;
+    margin-left: 12px;
+  }
+
+  .exp-detail-body {
+    @apply flex justify-between gap-x-3 mt-10;
+  }
+}
